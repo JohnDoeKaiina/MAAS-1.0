@@ -1,4 +1,39 @@
-{
-    "status": "pending"
-  }
+[
+    {
+      "model_id": "model1_id_here",
+      "model_name": "Model 1",
+      "model_description": "Description for Model 1",
+      "model_notebook": "Notebook for Model 1",
+      "model_dataset": "Dataset for Model 1",
+      "model_app": "App for Model 1",
+      "created": "timestamp_for_model1_creation_here",
+      "last_updated": "timestamp_for_model1_last_update_here",
+      "author": "Author for Model 1",
+      "credential": "Credential details for Model 1"
+    },
+    {
+      "model_id": "model2_id_here",
+      "model_name": "Model 2",
+      "model_description": "Description for Model 2",
+      "model_notebook": "Notebook for Model 2",
+      "model_dataset": "Dataset for Model 2",
+      "model_app": "App for Model 2",
+      "created": "timestamp_for_model2_creation_here",
+      "last_updated": "timestamp_for_model2_last_update_here",
+      "author": "Author for Model 2",
+      "credential": "Credential details for Model 2"
+    },
+    {
+      "model_id": "model3_id_here",
+      "model_name": "Model 3",
+      "model_description": "Description for Model 3",
+      "model_notebook": "Notebook for Model 3",
+      "model_dataset": "Dataset for Model 3",
+      "model_app": "App for Model 3",
+      "created": "timestamp_for_model3_creation_here",
+      "last_updated": "timestamp_for_model3_last_update_here",
+      "author": "Author for Model 3",
+      "credential": "Credential details for Model 3"
+    }
+  ]
   
