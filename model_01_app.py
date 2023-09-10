@@ -1,58 +1,64 @@
 import streamlit as st
+import requests
 import tensorflow as tf
 import numpy as np
 from PIL import Image
+from io import BytesIO
 
+# Constants
+IMG_WIDTH = 224
+IMG_HEIGHT = 224
 
-st.set_option('deprecation.showfileUploaderEncoding', False)
+# Load the pre-trained model
+model = tf.keras.models.load_model('./models/model_01.hdf5')
 
-@st.cache(allow_output_mutation=True)
-def load_model():
-	model = tf.keras.models.load_model('./models/model_01.hdf5')
-	return model
+def classify_image(image):
+    img = Image.open(BytesIO(image))
+    img = img.resize((IMG_WIDTH, IMG_HEIGHT))
+    img = np.array(img)
+    img = np.expand_dims(img, axis=0)
 
+    classes = model.predict(img, batch_size=10)
+    return classes[0][0]
 
-def predict_class(image, model):
+def main():
+    st.title("Pneumonia Detection App")
+    st.sidebar.header("Settings")
 
+    # Option to upload an image
+    uploaded_image = st.sidebar.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 
-    #img = load_img(BytesIO(response.content), target_size=(IMG_WIDTH, IMG_HEIGHT))
-    #img = img_to_array(img)
-    #img = np.expand_dims(img, axis=0)
-    
-	#image = tf.cast(image, tf.float32)
-	
-	image = tf.image.resize(image, [150, 150])
-	image = np.expand_dims(image, axis = 0)
-	prediction = model.predict(image,batch_size=10)
+    # Option to enter a list of URLs
+    url_list = st.sidebar.text_area("Enter a list of image URLs (one URL per line)")
 
-	return prediction
+    if uploaded_image is not None:
+        st.sidebar.text("Uploaded Image:")
+        st.sidebar.image(uploaded_image, use_column_width=True)
+        image = uploaded_image.read()
+        result = classify_image(image)
+        st.write("Prediction:")
+        if result > 0.5:
+            st.write("This image is a PNEUMONIA case.")
+        else:
+            st.write("This image is a NORMAL case.")
 
+    elif url_list:
+        url_list = url_list.split("\n")
+        for url in url_list:
+            if url.strip() == "":
+                continue
+            response = requests.get(url)
+            if response.status_code == 200:
+                image = response.content
+                result = classify_image(image)
+                st.image(url, caption="URL Image", use_column_width=True)
+                st.write("Prediction:")
+                if result > 0.5:
+                    st.write(f"{url} is a PNEUMONIA case.")
+                else:
+                    st.write(f"{url} is a NORMAL case.")
+            else:
+                st.write(f"Unable to fetch image from URL: {url}")
 
-model = load_model()
-st.title('Flower Classifier')
-
-file = st.file_uploader("Upload an image of a flower", type=["jpg", "png"])
-
-
-if file is None:
-	st.text('Waiting for upload....')
-
-else:
-	slot = st.empty()
-	slot.text('Running inference....')
-
-	test_image = Image.open(file)
-
-	st.image(test_image, caption="Input Image", width = 400)
-
-	pred = predict_class(np.asarray(test_image), model)
-
-	class_names = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
-
-	result = np.argmax(pred)
-	
-	output = 'The image is a ' + result
-
-	slot.text('Done')
-
-	st.success(output)
+if __name__ == "__main__":
+    main()
