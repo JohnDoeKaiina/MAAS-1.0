@@ -18,7 +18,7 @@ def classify_image(image):
     img = Image.open(BytesIO(image))
     img = img.resize((IMG_WIDTH, IMG_HEIGHT))
     img = img.convert('RGB')
-    img = img / 255.0  # Normalize the image to values between 0 and 1 (if not already normalized)
+    #img = img / 255.0  # Normalize the image to values between 0 and 1 (if not already normalized)
 
     classes = model.predict(img, batch_size=10)
     return classes[0][0]
