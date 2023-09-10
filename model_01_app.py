@@ -13,10 +13,11 @@ NUM_CHANNELS = 3
 # Load the pre-trained model
 model = tf.keras.models.load_model('./models/model_01.hdf5')
 
+
 def classify_image(image):
-    img = Image.open(BytesIO(image))
+    img = np.array(img, dtype=np.float32)
     img = img.resize((IMG_WIDTH, IMG_HEIGHT))
-    img = np.array(img, dtype=np.float32, shape=(None, 150, 150, NUM_CHANNELS))
+    img = img.convert('RGB')
     img = img / 255.0  # Normalize the image to values between 0 and 1 (if not already normalized)
 
     classes = model.predict(img, batch_size=10)
