@@ -4,9 +4,8 @@ import numpy as np
 from PIL import Image
 
 from tensorflow import keras
-
 # Load the pre-trained model
-model = keras.models.load_model('models/model.h5')
+model = keras.models.load_model('models/model_01.hdf5')
 
 # Create a function to classify an image
 def classify_image(image):
