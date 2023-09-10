@@ -5,6 +5,7 @@ import numpy as np
 from PIL import Image
 from io import BytesIO
 
+
 # Constants
 IMG_WIDTH = 150
 IMG_HEIGHT = 150
@@ -15,8 +16,9 @@ model = tf.keras.models.load_model('./models/model_01.hdf5')
 def classify_image(image):
     img = Image.open(BytesIO(image))
     img = img.resize((IMG_WIDTH, IMG_HEIGHT))
-    img = np.array(img)
     img = img.reshape(1, IMG_WIDTH, IMG_HEIGHT, 3)
+    
+    img = np.array(img)
     img = np.expand_dims(img, axis=0)
 
     
