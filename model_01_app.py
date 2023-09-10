@@ -5,23 +5,31 @@ import numpy as np
 from PIL import Image
 from io import BytesIO
 
-
 # Constants
 IMG_WIDTH = 150
 IMG_HEIGHT = 150
 
 # Load the pre-trained model
-model = tf.keras.models.load_model('./models/sequential_0910_039')
+model = tf.keras.models.load_model('./models/sequential_0910_0309')
 
 def classify_image(image):
     img = Image.open(BytesIO(image))
     img = img.resize((IMG_WIDTH, IMG_HEIGHT))
-    img = img.reshape(1, IMG_WIDTH, IMG_HEIGHT, 3)
-    
     img = np.array(img)
     img = np.expand_dims(img, axis=0)
+    shape = img.shape
+    st.write("The shape of your input is:", shape)
 
     
+    image = np.zeros((150, 150,3))
+    # Add a new dimension at axis=2
+    expanded_image = np.expand_dims(image, axis=0)
+    shape2 = expanded_image.shape
+    st.write("expanded image is:", shape2)
+
+
+
+
     classes = model.predict(img, batch_size=10)
     return classes[0][0]
 
