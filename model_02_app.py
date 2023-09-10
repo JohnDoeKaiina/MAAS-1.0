@@ -17,17 +17,19 @@ user_responses = {}
 
 # Ask the user the questions and collect responses
 for question in questions:
-    response = st.radio(question, ["Yes", "No"])
+    response = st.radio(question, ["Yes", "No", "Not Sure"])
     user_responses[question] = response
 
-# Calculate the diagnosis
-num_yes = sum([1 for response in user_responses.values() if response == "Yes"])
+# Add a "Show Result" button to reveal the diagnosis
+if st.button("Show Result"):
+    # Calculate the diagnosis
+    num_yes = sum([1 for response in user_responses.values() if response == "Yes"])
 
-if num_yes >= 3:
-    diagnosis = "It's likely you have a common cold."
-else:
-    diagnosis = "It's less likely you have a common cold."
+    if num_yes >= 3:
+        diagnosis = "It's likely you have a common cold."
+    else:
+        diagnosis = "It's less likely you have a common cold."
 
-# Display the diagnosis
-st.subheader("Diagnosis:")
-st.write(diagnosis)
+    # Display the diagnosis
+    st.subheader("Diagnosis:")
+    st.write(diagnosis)
