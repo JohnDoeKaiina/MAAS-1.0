@@ -14,7 +14,7 @@ model = tf.keras.models.load_model('./models/model_01.hdf5')
 
 def classify_image(image):
     img = Image.open(BytesIO(image))
-    img = img.resize((IMG_WIDTH, IMG_HEIGHT,3))
+    img = img.resize((IMG_WIDTH, IMG_HEIGHT))
     img = np.array(img)
     img = np.expand_dims(img, axis=0)
 
