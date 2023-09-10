@@ -20,8 +20,8 @@ def classify_image(image):
     shape = img.shape
     st.write("The shape of your input is:", shape)
 
-    
-    image = np.zeros((150, 150,3))
+
+    image = np.full((150, 150, 3), (255, 0, 0), dtype=np.uint8)
     # Add a new dimension at axis=2
     expanded_image = np.expand_dims(image, axis=0)
     shape2 = expanded_image.shape
