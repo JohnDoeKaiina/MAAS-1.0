@@ -15,7 +15,7 @@ model = tf.keras.models.load_model('./models/model_01.hdf5')
 
 
 def classify_image(image):
-    img = np.array(image, dtype=np.float32)
+    img = Image.open(BytesIO(image))
     img = img.resize((IMG_WIDTH, IMG_HEIGHT))
     img = img.convert('RGB')
     img = img / 255.0  # Normalize the image to values between 0 and 1 (if not already normalized)
