@@ -1,0 +1,72 @@
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<LinearLayout
+		android:id="@+id/linear1"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:padding="8dp"
+		android:background="#FFFFFF"
+		android:gravity="center_vertical"
+		android:orientation="vertical">
+		<LinearLayout
+			android:id="@+id/linear2"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:padding="8dp"
+			android:orientation="horizontal"
+			android:layout_weight="1" />
+		<ImageView
+			android:id="@+id/imageview1"
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:layout_marginLeft="12dp"
+			android:src="@drawable/ic_healing_grey"
+			android:scaleType="center" />
+		<TextView
+			android:id="@+id/textview1"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="25dp"
+			android:layout_marginRight="25dp"
+			android:layout_marginBottom="25dp"
+			android:padding="8dp"
+			android:text="&quot;increasing diagnosis accuracy and confidence in diagnosis&quot;"
+			android:textSize="30sp"
+			android:textStyle="bold"
+			android:textColor="#000000" />
+		<LinearLayout
+			android:id="@+id/linear3"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginBottom="45dp"
+			android:padding="8dp"
+			android:gravity="bottom"
+			android:orientation="horizontal"
+			android:layout_weight="1">
+			<LinearLayout
+				android:id="@+id/buttonout"
+				android:layout_width="match_parent"
+				android:layout_height="45dp"
+				android:padding="3dp"
+				android:background="#000000"
+				android:gravity="center_horizontal|center_vertical"
+				android:orientation="horizontal">
+				<TextView
+					android:id="@+id/buttonin"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:padding="8dp"
+					android:background="#FFFFFF"
+					android:gravity="center_horizontal|center_vertical"
+					android:text="get Started"
+					android:textSize="20sp"
+					android:textColor="#000000" />
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>
