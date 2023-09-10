@@ -16,21 +16,9 @@ def classify_image(image):
     img = Image.open(BytesIO(image))
     img = img.resize((IMG_WIDTH, IMG_HEIGHT))
     img = np.array(img)
-    img = np.expand_dims(img, axis=0)
-    shape = img.shape
-    st.write("The shape of your input is:", shape)
+    img = img.reshape(1, IMG_WIDTH, IMG_HEIGHT, 3)
 
-
-    image = np.full((150, 150, 3), (0, 0, 0), dtype=np.uint8)
-    # Add a new dimension at axis=2
-    expanded_image = np.expand_dims(image, axis=0)
-    shape2 = expanded_image.shape
-    st.write("expanded image is:", shape2)
-
-
-
-
-    classes = model.predict(expanded_image, batch_size=10)
+    classes = model.predict(img, batch_size=10)
     return classes[0][0]
 
 def main():
