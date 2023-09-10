@@ -13,24 +13,19 @@ def load_model():
 
 
 def predict_class(image, model):
-    # Ensure that the image has 3 dimensions (height, width, channels)
-    if len(image.shape) != 3:
-        raise ValueError("Input image must have 3 dimensions (height, width, channels)")
 
-    # Resize the image to the desired size
-    image = tf.image.resize(image, [180, 180])
+
+    #img = load_img(BytesIO(response.content), target_size=(IMG_WIDTH, IMG_HEIGHT))
+    #img = img_to_array(img)
+    #img = np.expand_dims(img, axis=0)
     
-    # Convert the image to float32
-    image = tf.cast(image, tf.float32)
+	#image = tf.cast(image, tf.float32)
+	image = tf.image.resize(image, [180, 180])
+	image = np.expand_dims(image, axis = 0)
 
-    # Add an extra dimension to simulate batch size of 1
-    image = np.expand_dims(image, axis=0)
+	prediction = model.predict(image)
 
-    # Make the prediction
-    prediction = model.predict(image)
-
-    return prediction
-
+	return prediction
 
 
 model = load_model()
