@@ -30,7 +30,7 @@ def classify_image(image):
 
 
 
-    classes = model.predict(img, batch_size=10)
+    classes = model.predict(expanded_image, batch_size=10)
     return classes[0][0]
 
 def main():
