@@ -1,65 +1,25 @@
 import streamlit as st
-import requests
 import tensorflow as tf
 import numpy as np
 from PIL import Image
-from io import BytesIO
 
-# Constants
-IMG_WIDTH = 150
-IMG_HEIGHT = 150  # Update these values to (IMG_WIDTH, IMG_HEIGHT, 3)
+import keras
 
 # Load the pre-trained model
-model = tf.keras.models.load_model('./models/model_01.hdf5')
+model = keras.models.load_model('models/model.h5')
 
+# Create a function to classify an image
 def classify_image(image):
-    img = Image.open(BytesIO(image))
-    img = img.resize((IMG_WIDTH, IMG_HEIGHT))
-    img = np.array(img)
-    img = np.expand_dims(img, axis=0)  # Add a batch dimension
-    img = img / 255.0  # Normalize the image to values between 0 and 1 (if not already normalized)
+  prediction = model.predict(image)
+  return prediction
 
-    classes = model.predict(img, batch_size=1)  # Set batch_size to 1
-    return classes[0][0]
+# Create a Streamlit app
+st.title('Image Classification App')
 
-def main():
-    st.title("Pneumonia Detection App")
-    st.sidebar.header("Settings")
+# Upload an image
+image = st.file_uploader('Upload an image')
 
-    # Option to upload an image
-    uploaded_image = st.sidebar.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
-
-    # Option to enter a list of URLs
-    url_list = st.sidebar.text_area("Enter a list of image URLs (one URL per line)")
-
-    if uploaded_image is not None:
-        st.sidebar.text("Uploaded Image:")
-        st.sidebar.image(uploaded_image, use_column_width=True)
-        image = uploaded_image.read()
-        result = classify_image(image)
-        st.write("Prediction:")
-        if result > 0.5:
-            st.write("This image is a PNEUMONIA case.")
-        else:
-            st.write("This image is a NORMAL case.")
-
-    elif url_list:
-        url_list = url_list.split("\n")
-        for url in url_list:
-            if url.strip() == "":
-                continue
-            response = requests.get(url)
-            if response.status_code == 200:
-                image = response.content
-                result = classify_image(image)
-                st.image(url, caption="URL Image", use_column_width=True)
-                st.write("Prediction:")
-                if result > 0.5:
-                    st.write(f"{url} is a PNEUMONIA case.")
-                else:
-                    st.write(f"{url} is a NORMAL case.")
-            else:
-                st.write(f"Unable to fetch image from URL: {url}")
-
-if __name__ == "__main__":
-    main()
+# Classify the image
+if image is not None:
+  prediction = classify_image(image)
+  st.write('The image is classified as:', prediction)
