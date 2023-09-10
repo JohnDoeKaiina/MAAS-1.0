@@ -4,35 +4,55 @@ import numpy as np
 from PIL import Image
 
 
+st.set_option('deprecation.showfileUploaderEncoding', False)
+
+@st.cache(allow_output_mutation=True)
+def load_model():
+	model = tf.keras.models.load_model('./models/model_01.hdf5')
+	return model
 
 
-#to be updated
-import requests
-from keras.preprocessing.image import load_img, img_to_array
-from keras.models import load_model
-import numpy as np
-from io import BytesIO
+def predict_class(image, model):
 
-# Define the URL of the HDF5 model file
-model_url = "URL_OF_YOUR_MODEL.hdf5"
 
-# Load the Keras model from the URL
-model = load_model(model_url)
+    #img = load_img(BytesIO(response.content), target_size=(IMG_WIDTH, IMG_HEIGHT))
+    #img = img_to_array(img)
+    #img = np.expand_dims(img, axis=0)
+    
+	image = tf.cast(image, tf.float32)
+	image = tf.image.resize(image, [180, 180])
+	image = np.expand_dims(image, axis = 0)
 
-url_list = [
-    # Add your list of image URLs here
-    # ...
-]
+	prediction = model.predict(image)
 
-for url in url_list:
-    response = requests.get(url)
-    img = load_img(BytesIO(response.content), target_size=(IMG_WIDTH, IMG_HEIGHT))
-    img = img_to_array(img)
-    img = np.expand_dims(img, axis=0)
+	return prediction
 
-    classes = model.predict(img, batch_size=10)
-    print(classes[0][0])
-    if classes[0][0] > 0.5:
-        print(url + " is PNEUMONIA case")
-    else:
-        print(url + " is NORMAL case")
+
+model = load_model()
+st.title('Flower Classifier')
+
+file = st.file_uploader("Upload an image of a flower", type=["jpg", "png"])
+
+
+if file is None:
+	st.text('Waiting for upload....')
+
+else:
+	slot = st.empty()
+	slot.text('Running inference....')
+
+	test_image = Image.open(file)
+
+	st.image(test_image, caption="Input Image", width = 400)
+
+	pred = predict_class(np.asarray(test_image), model)
+
+	class_names = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']
+
+	result = class_names[np.argmax(pred)]
+
+	output = 'The image is a ' + result
+
+	slot.text('Done')
+
+	st.success(output)
