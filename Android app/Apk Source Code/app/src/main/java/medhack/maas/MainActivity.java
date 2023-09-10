@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 	private TextView textview4;
 	private LinearLayout request_in;
 	private EditText request;
+	private TextView textview34;
 	private HorizontalScrollView hscroll1;
 	private LinearLayout linear6;
 	private CardView cardview1;
@@ -99,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
 	private LinearLayout linear24;
 	private ImageView imageview15;
 	private TextView textview32;
-	private TextView textview34;
 	
 	private Intent i = new Intent();
 	
@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
 		textview4 = findViewById(R.id.textview4);
 		request_in = findViewById(R.id.request_in);
 		request = findViewById(R.id.request);
+		textview34 = findViewById(R.id.textview34);
 		hscroll1 = findViewById(R.id.hscroll1);
 		linear6 = findViewById(R.id.linear6);
 		cardview1 = findViewById(R.id.cardview1);
@@ -168,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
 		linear24 = findViewById(R.id.linear24);
 		imageview15 = findViewById(R.id.imageview15);
 		textview32 = findViewById(R.id.textview32);
-		textview34 = findViewById(R.id.textview34);
 		
 		circleimageview1.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
 				ViewTooltip
 				        .on(MainActivity.this, linear9)
 				        .position(ViewTooltip.Position.TOP)
-				        .text("This model is\20%\unavailable")
+				        .text("This model is unavailable")
 				         .shadowColor(0xFF000000)
 				.color(0xFF3F51B5)
 				.corner(15)
@@ -209,6 +209,27 @@ public class MainActivity extends AppCompatActivity {
 				        .text("Unavailable")
 				         .shadowColor(0xFF000000)
 				.color(0xFFE91E63)
+				.corner(15)
+				        .show();
+			}
+		});
+		
+		linear22.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				
+			}
+		});
+		
+		linear24.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				ViewTooltip
+				        .on(MainActivity.this, linear24)
+				        .position(ViewTooltip.Position.TOP)
+				        .text("Currently not available")
+				         .shadowColor(0xFF000000)
+				.color(0xFF3F51B5)
 				.corner(15)
 				        .show();
 			}

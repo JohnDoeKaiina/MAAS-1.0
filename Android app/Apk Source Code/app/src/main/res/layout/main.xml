@@ -234,7 +234,8 @@
 									android:layout_height="match_parent"
 									android:padding="8dp"
 									android:background="#3F51B5"
-									android:orientation="vertical">
+									android:orientation="vertical"
+									android:alpha="0.5">
 									<ImageView
 										android:id="@+id/imageview3"
 										android:layout_width="wrap_content"
@@ -294,7 +295,8 @@
 									android:layout_height="match_parent"
 									android:padding="8dp"
 									android:background="#E91E63"
-									android:orientation="vertical">
+									android:orientation="vertical"
+									android:alpha="0.5">
 									<ImageView
 										android:id="@+id/imageview2"
 										android:layout_width="wrap_content"
@@ -358,7 +360,7 @@
 						android:paddingTop="2dp"
 						android:paddingRight="8dp"
 						android:paddingBottom="2dp"
-						android:text="Text Analyzer"
+						android:text="Text Models"
 						android:textSize="16sp"
 						android:textColor="#000000" />
 				</LinearLayout>
@@ -372,8 +374,7 @@
 						android:layout_height="match_parent"
 						android:paddingBottom="50dp"
 						android:background="#EEEEEE"
-						android:orientation="horizontal"
-						android:alpha="0.5">
+						android:orientation="horizontal">
 						<androidx.cardview.widget.CardView
 							android:id="@+id/cardview13"
 							android:layout_width="100dp"
@@ -405,7 +406,7 @@
 									android:paddingTop="2dp"
 									android:paddingRight="8dp"
 									android:paddingBottom="2dp"
-									android:text="imagine-tobi"
+									android:text="Cold test"
 									android:textSize="12sp"
 									android:textColor="#000000" />
 							</LinearLayout>
@@ -416,6 +417,7 @@
 							android:layout_height="100dp"
 							android:layout_margin="8dp"
 							android:orientation="vertical"
+							android:alpha="0.5"
 							app:cardElevation="0dp"
 							app:cardCornerRadius="10dp">
 							<LinearLayout
@@ -441,7 +443,7 @@
 									android:paddingTop="2dp"
 									android:paddingRight="8dp"
 									android:paddingBottom="2dp"
-									android:text="imagine-tobi"
+									android:text="Disease predictor from DNA Sequence"
 									android:textSize="12sp"
 									android:textColor="#000000" />
 							</LinearLayout>
@@ -452,6 +454,7 @@
 							android:layout_height="100dp"
 							android:layout_margin="8dp"
 							android:orientation="vertical"
+							android:alpha="0.5"
 							app:cardElevation="0dp"
 							app:cardCornerRadius="10dp">
 							<LinearLayout
@@ -477,7 +480,7 @@
 									android:paddingTop="2dp"
 									android:paddingRight="8dp"
 									android:paddingBottom="2dp"
-									android:text="imagine-tobi"
+									android:text="Heath risk generator from medical record"
 									android:textSize="12sp"
 									android:textColor="#000000" />
 							</LinearLayout>
@@ -495,14 +498,14 @@
 								android:layout_width="100dp"
 								android:layout_height="100dp"
 								android:padding="2dp"
-								android:background="#FFFFFF"
+								android:background="#0091EA"
 								android:gravity="center_horizontal|center_vertical"
 								android:orientation="vertical">
 								<ImageView
 									android:id="@+id/imageview15"
 									android:layout_width="wrap_content"
 									android:layout_height="wrap_content"
-									android:src="@drawable/doodle_1"
+									android:src="@drawable/ic_extension_white"
 									android:scaleType="centerInside"
 									android:layout_weight="1" />
 								<TextView
@@ -513,9 +516,9 @@
 									android:paddingTop="2dp"
 									android:paddingRight="8dp"
 									android:paddingBottom="2dp"
-									android:text="imagine-tobi"
+									android:text="More"
 									android:textSize="12sp"
-									android:textColor="#000000" />
+									android:textColor="#FFFFFF" />
 							</LinearLayout>
 						</androidx.cardview.widget.CardView>
 					</LinearLayout>
