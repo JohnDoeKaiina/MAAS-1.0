@@ -7,7 +7,7 @@ from io import BytesIO
 
 # Constants
 IMG_WIDTH = 150
-IMG_HEIGHT = 150
+IMG_HEIGHT = 250
 
 # Load the pre-trained model
 model = tf.keras.models.load_model('./models/sequential_0910_0309')
