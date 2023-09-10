@@ -21,7 +21,7 @@ def classify_image(image):
     img = np.array(img)
     img = np.expand_dims(img, axis=0)
 
-    
+    expanded
     classes = model.predict(img, batch_size=10)
     return classes[0][0]
 
