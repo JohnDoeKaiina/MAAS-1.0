@@ -17,7 +17,6 @@ def classify_image(image):
     img = img.resize((IMG_WIDTH, IMG_HEIGHT))
     img = np.array(img)
     img = img.reshape(1, IMG_WIDTH, IMG_HEIGHT, 3)
-
     img = np.expand_dims(img, axis=0)
 
     
