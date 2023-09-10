@@ -11,7 +11,7 @@ IMG_WIDTH = 150
 IMG_HEIGHT = 150
 
 # Load the pre-trained model
-model = tf.keras.models.load_model('./models/model_01.hdf5')
+model = tf.keras.models.load_model('./models/sequential_0910_039')
 
 def classify_image(image):
     img = Image.open(BytesIO(image))
@@ -22,7 +22,7 @@ def classify_image(image):
     img = np.expand_dims(img, axis=0)
 
     
-    classes = model.predict(expanded_image, batch_size=10)
+    classes = model.predict(img, batch_size=10)
     return classes[0][0]
 
 def main():
