@@ -6,8 +6,9 @@ from PIL import Image
 from io import BytesIO
 
 # Constants
-IMG_WIDTH = 150
-IMG_HEIGHT = 150  # Update these values to (IMG_WIDTH, IMG_HEIGHT, 3)
+IMG_WIDTH = 130
+IMG_HEIGHT = 130
+NUM_CHANNELS = 5
 
 # Load the pre-trained model
 model = tf.keras.models.load_model('./models/model_01.hdf5')
@@ -15,10 +16,11 @@ model = tf.keras.models.load_model('./models/model_01.hdf5')
 def classify_image(image):
     img = Image.open(BytesIO(image))
     img = img.resize((IMG_WIDTH, IMG_HEIGHT))
-    img = np.array(img)
-    img = np.expand_dims(img, axis=0)
+    img_array = np.array(img)
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array = np.concatenate([img_array] * NUM_CHANNELS, axis=-1)  # Add 5 channels
 
-    classes = model.predict(img, batch_size=10)
+    classes = model.predict(img_array, batch_size=10)
     return classes[0][0]
 
 def main():
