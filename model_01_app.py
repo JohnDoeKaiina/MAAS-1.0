@@ -33,7 +33,7 @@ def classify_image(image):
     img = img.resize((IMG_WIDTH, IMG_HEIGHT))
     img = np.array(img)
     # Add a new dimension at axis=3
-    expanded_image = np.expand_dims(img, axis=3)
+    expanded_image = np.expand_dims(img, axis=2)
     shape = expanded_image.shape
     st.write("The shape of your input is:", shape)
 
