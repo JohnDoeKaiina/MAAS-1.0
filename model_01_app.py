@@ -20,8 +20,8 @@ def predict_class(image, model):
     #img = np.expand_dims(img, axis=0)
     
 	#image = tf.cast(image, tf.float32)
-	#image = tf.image.resize(image, [180, 180])
 	
+	image = tf.image.resize(image, [150, 150])
 	image = np.expand_dims(image, axis = 0)
 	prediction = model.predict(image)
 
