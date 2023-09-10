@@ -7,20 +7,19 @@ from io import BytesIO
 
 # Constants
 IMG_WIDTH = 150
-IMG_HEIGHT = 150
-NUM_CHANNELS = 3
+IMG_HEIGHT = 150  # Update these values to (IMG_WIDTH, IMG_HEIGHT, 3)
 
 # Load the pre-trained model
 model = tf.keras.models.load_model('./models/model_01.hdf5')
 
-
 def classify_image(image):
     img = Image.open(BytesIO(image))
     img = img.resize((IMG_WIDTH, IMG_HEIGHT))
-    img = img.convert('RGB')
-    #img = img / 255.0  # Normalize the image to values between 0 and 1 (if not already normalized)
+    img = np.array(img)
+    img = np.expand_dims(img, axis=0)  # Add a batch dimension
+    img = img / 255.0  # Normalize the image to values between 0 and 1 (if not already normalized)
 
-    classes = model.predict(img, batch_size=10)
+    classes = model.predict(img, batch_size=1)  # Set batch_size to 1
     return classes[0][0]
 
 def main():
