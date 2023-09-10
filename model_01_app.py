@@ -14,10 +14,10 @@ model = tf.keras.models.load_model('./models/model_01.hdf5')
 
 def classify_image(image):
     img = Image.open(BytesIO(image))
-    img = img.resize((IMG_WIDTH, IMG_HEIGHT))
+    img = img.resize((IMG_WIDTH, IMG_HEIGHT))  # Resize without specifying channels
     img = np.array(img)
-    img = np.expand_dims(img, axis=0)
-    img = img / 255.0  # Normalize the image to values between 0 and 1 (if not already normalized)
+    img = np.expand_dims(img, axis=0)  # Add a batch dimension
+    img = img / 255.0  # Normalize the image to values between 0 and 1
 
     classes = model.predict(img, batch_size=10)
     return classes[0][0]
