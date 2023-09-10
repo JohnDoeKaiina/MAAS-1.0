@@ -10,7 +10,7 @@ IMG_WIDTH = 224
 IMG_HEIGHT = 224  # Update these values to (IMG_WIDTH, IMG_HEIGHT, 3)
 
 # Load the pre-trained model
-model = tf.keras.models.load_model('./model_01.hdf5')
+model = tf.keras.models.load_model('./model/model_01.hdf5')
 
 def classify_image(image):
     img = Image.open(BytesIO(image))
