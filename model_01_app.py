@@ -14,7 +14,7 @@ model = tf.keras.models.load_model('./models/sequential_0910_0309')
 
 def classify_image(image):
     img = Image.open(BytesIO(image))
-    img = img.resize((IMG_WIDTH, IMG_HEIGHT))
+    #img = img.resize((IMG_WIDTH, IMG_HEIGHT))
     img = np.array(img)
     image = np.zeros((150, 150,3))
     img = np.expand_dims(img, axis=0)
