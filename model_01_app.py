@@ -18,6 +18,9 @@ def classify_image(image):
     img = np.array(img)
     img = img.reshape(1, IMG_WIDTH, IMG_HEIGHT, 3)
 
+    img = np.expand_dims(img, axis=0)
+
+    
     classes = model.predict(img, batch_size=10)
     return classes[0][0]
 
