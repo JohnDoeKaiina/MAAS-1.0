@@ -217,7 +217,18 @@ public class MainActivity extends AppCompatActivity {
 		linear22.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
-				
+				i.setClass(getApplicationContext(), ModelAppActivity.class);
+				i.putExtra("url", "https://maas-10-t2pyuhgiqtcqxekbhhxclf.streamlit.app/");
+				startActivity(i);
+			}
+		});
+		
+		linear25.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				i.setClass(getApplicationContext(), ModelAppActivity.class);
+				i.putExtra("url", "https://maas-10-amqmbbchxpimj9zz7vac6cmodel3pregnacy.streamlit.app/");
+				startActivity(i);
 			}
 		});
 		

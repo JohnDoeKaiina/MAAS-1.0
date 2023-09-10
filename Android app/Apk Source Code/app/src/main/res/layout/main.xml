@@ -417,7 +417,6 @@
 							android:layout_height="100dp"
 							android:layout_margin="8dp"
 							android:orientation="vertical"
-							android:alpha="0.5"
 							app:cardElevation="0dp"
 							app:cardCornerRadius="10dp">
 							<LinearLayout
@@ -432,7 +431,8 @@
 									android:id="@+id/imageview16"
 									android:layout_width="wrap_content"
 									android:layout_height="wrap_content"
-									android:src="@drawable/doodle_1"
+									android:layout_marginTop="10dp"
+									android:src="@drawable/preg"
 									android:scaleType="centerInside"
 									android:layout_weight="1" />
 								<TextView
@@ -443,7 +443,7 @@
 									android:paddingTop="2dp"
 									android:paddingRight="8dp"
 									android:paddingBottom="2dp"
-									android:text="Disease predictor from DNA Sequence"
+									android:text="Pregnancy test"
 									android:textSize="12sp"
 									android:textColor="#000000" />
 							</LinearLayout>
