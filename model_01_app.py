@@ -3,7 +3,7 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 
-import keras
+from tensorflow import keras
 
 # Load the pre-trained model
 model = keras.models.load_model('models/model.h5')
@@ -21,5 +21,6 @@ image = st.file_uploader('Upload an image')
 
 # Classify the image
 if image is not None:
+  image = np.array(Image.open(image))
   prediction = classify_image(image)
   st.write('The image is classified as:', prediction)
