@@ -10,7 +10,7 @@ IMG_WIDTH = 150
 IMG_HEIGHT = 150
 
 # Load the pre-trained model
-model = tf.keras.models.load_model('./models/model_01.hdf5')
+model = tf.keras.models.load_model('./models/sequential_0910_0309')
 
 def classify_image(image):
     img = Image.open(BytesIO(image))
