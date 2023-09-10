@@ -23,7 +23,7 @@ def classify_image(image):
     
     image = np.zeros((1, 150, 150,3))
     # Add a new dimension at axis=2
-    #expanded_image = np.expand_dims(image, axis=2)
+    expanded_image = np.expand_dims(image, axis=2)
     shape2 = expanded_image.shape
     st.write("expanded image is:", shape2)
 
