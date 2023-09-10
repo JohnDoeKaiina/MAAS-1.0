@@ -7,7 +7,7 @@ from io import BytesIO
 
 # Constants
 IMG_WIDTH = 150
-IMG_HEIGHT = 151
+IMG_HEIGHT = 150
 
 # Load the pre-trained model
 model = tf.keras.models.load_model('./models/sequential_0910_0309')
@@ -21,7 +21,7 @@ def classify_image(image):
     st.write("The shape of your input is:", shape)
 
     
-    image = np.zeros((150, 150,3))
+    image = np.zeros((150, 151,3))
     # Add a new dimension at axis=2
     expanded_image = np.expand_dims(image, axis=0)
     shape2 = expanded_image.shape
