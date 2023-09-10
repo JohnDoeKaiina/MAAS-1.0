@@ -2,4 +2,3 @@ streamlit
 tensorflow
 pandas
 numpy
-keras
