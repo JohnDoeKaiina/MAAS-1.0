@@ -18,8 +18,11 @@ def classify_image(image):
     img = np.array(img)
     img = np.expand_dims(img, axis=0)
 
-    classes = model.predict(img, batch_size=10)
-    return classes[0][0]
+    shape = img.shape
+    st.write("The shape of your input is:", shape)
+
+    #classes = model.predict(img, batch_size=10)
+    #return classes[0][0]
 
 def main():
     st.title("Pneumonia Detection App")
