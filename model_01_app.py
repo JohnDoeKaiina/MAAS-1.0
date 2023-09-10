@@ -48,7 +48,7 @@ def main():
         st.sidebar.image(uploaded_image, use_column_width=True)
         image = uploaded_image.read()
         result = classify_image(image)
-        st.write("Prediction:" + result)
+        st.write("Prediction: " + str(result))
         if result > 0.5:
             st.write("This image is a PNEUMONIA case.")
         else:
@@ -64,7 +64,7 @@ def main():
                 image = response.content
                 result = classify_image(image)
                 st.image(url, caption="URL Image", use_column_width=True)
-                st.write("Prediction:" + result)
+                st.write("Prediction: " + str(result))
                 if result > 0.5:
                     st.write(f"{url} is a PNEUMONIA case.")
                 else:
